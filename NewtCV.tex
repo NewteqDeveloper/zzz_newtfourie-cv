@@ -1,0 +1,374 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Friggeri Resume/CV
+% XeLaTeX Template
+% Version 1.0 (5/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Adrien Friggeri (adrien@friggeri.net)
+% https://github.com/afriggeri/CV
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important notes:
+% This template needs to be compiled with XeLaTeX and the bibliography, if used,
+% needs to be compiled with biber rather than bibtex.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{friggeri-cv} % Add 'print' as an option into the square bracket to remove colors from this template for printing
+
+\addbibresource{bibliography.bib} % Specify the bibliography file to include publications
+
+\begin{document}
+
+\header{Newt }{Fourie}{Intermediate Software Developer} % Your name and current job title/field
+
+%----------------------------------------------------------------------------------------
+%	SIDEBAR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{aside} % In the aside, each new line forces a line break
+\section{Contact}
++27 (0)78 863 5285
+\href{mailto:newtfourie@gmail.com}{newtfourie@gmail.com}
+\section{Website}
+\href{https://blog.newteq.co.za/}{https://blog.newteq.co.za/}
+\section{Languages}
+Primary: English
+Alternative: Afrikaans
+\section{Programming Proficiency}
+C\#, dotnet-core 2,
+Angular2, TypeScript,
+dotnet-framework 4+,
+DevOps,
+RavenDB, SQL Server
+\end{aside}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{education}
+
+\begin{entrylist}
+
+\entry
+{2014}
+{Bachelor of Science Honours (Computer Science)}
+{The University of Johannesburg}
+{Majors: Information Security, Compiler Construction, Functional Programming, Data Communication, Ethics and Legal Aspects of IT, Systems Programming, Network Information Security and a 2 Module Year Project\\
+Graduation date: 2015}
+
+\entry
+{2011--2013}
+{Bachelor of Science in Information Technology}
+{The University of Johannesburg}
+{Majors: Computer Science and Informatics\\
+Graduation date: 2014}
+
+\entry
+{2006--2010}
+{Matric}
+{Parktown Boys' High School}
+{Subjects: English, Afrikaans, Mathematics, Physical Science, Information Technology, Accounting, Advanced Programme Mathematics}
+
+%------------------------------------------------
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{work experience}
+
+\begin{entrylist}
+
+%\entry
+%{2017--now} %2017 March
+%{Intermidate Software Developer}
+%{Dariel Solutions}
+%{Unknown project at this point}
+
+\entry
+{2018} %2018 July - now
+{Intermediate Software Developer}
+{Dariel Solutions - BetterLife: BetterBond}
+{I am currently working in a team of 5 to rebuild the internal BetterLife system for managing bond applications to multiple banks. I took the lead in creating a brand new dynamic validation engine for the platform in order to allow us to define rules dynamically that are stored in RavenDB and loaded into C\# at runtime to evaluate if certain criteria are met. The validation engine primarily uses reflection in order to get the information of the objects at runtime so that an evaluation of the provided rules can be executed. The reason for building the validation engine was to allow us to easily manage business rules on the front end since the application has many layers to it. For example, certain banks require specific information from an applicant while others do not, this engine allows us to easily specify these rules and manage them dynamically on the front end. It will also be used for creating a list of required documents which are needed for each bank. If a rule is met, the document can be added to the list of available documents to select from.
+
+The BetterBond platform is built on Angular2 and ASP.NET MVC back end (using .NET framework 4.7.2). This system follows a microservice architecture, where each separate system is contained within its own bounded context and data changes that are required for other systems are published to a RabbitMQ bus. Once on the bus, any other microservice can consume the message and use the data. RavenDB 4 is the main database for operations of the application, additionally there is a SQL Server database that is used for reporting. The management of the SQL Server database is through Entity Framework Migrations. Changes that occur in the application are stored directly into RavenDB and then published to the RabbitMQ bus so that it can be consumed by the reporting service to update data in SQL Server. Starting at BetterLife I was and still am the most senior developer from Dariel on the team. I have provided a lot of guidance to both the Dariel and BetterLife teams in terms of best practices, as well as code quality management.}
+
+
+\end{entrylist}
+
+\newpage
+
+\begin{entrylist}
+
+\entry
+{2018} %2018 June - 2018 July
+{Intermediate Software Developer}
+{Dariel Solutions - Nedbank: MFC}
+{I worked on a angular2 front end system for creating a new vehicle purchasing platform at MFC Nedbank. I assisted another developer with front end tasks to create views and style them accordingly to Nedbank's style standards. The focus at Nedbank was to setup the basics for their DevOps across the MFC development teams. DevOps was a new area for the teams, therefore the focus was to create a template structure and outline in order to assist the teams in the future to get DevOps up and running more quickly for new projects/solutions. The DevOps team at Nedbank had the following infrastructure setup to provide DevOps throughout all development teams: Jenkins, XL Deploy, XL Release. The DevOps template was setup as a jenkinsfile that used powershell calls to build the solutions and used the jenkins plugins for XL Deploy and XL Release to hook into the created items on the respective platforms. The template was created to allow building and deploying of Angular2 projects as well as ASP.NET MVC (back end).}
+
+\entry
+{2018} %2018 May - 2018 June
+{Intermediate Software Developer}
+{Dariel Solutions - WbX}
+{I worked in a team of 5 to assist another Dariel team with meeting their deadlines for a stockpile management system as well as a identity server single sign on solution. Some of the noteworthy tasks were: setting up a remote instance of the solutions running in azure for testing purposes; setting up the team's DevOps using Jenkins and powershell; and assisting with bug fixes. The technology used for the two systems were Identity Server 3, and ASP.NET MVC (back end and front end).}
+
+\entry
+{2017--2018} %2017 March - 2018 May (MetroPay)
+{Intermediate Software Developer}
+{Dariel Solutions}
+{I worked in a team of 5 to create a cashless transaction and settlement platform. The purpose of system was to allow users to make cashless transactions for services and/or goods. All user related data was stored in RavenDB, while the transactional information was stored in SQL Server. The system architecture was setup as microservices and communication between the services was achieved with RabbitMQ. The back end APIs were developed in DotNet Core 2.0. The logging of all back end events was handled by Serilog and was sent to an ELK stack where we can easily access the logs via a web front end. The system included an admin web front end to administrate on-boarding of clients onto the platform and the management of these clients. This front end was developed in Angular2. During this project, we were exposed to a high degree of unit testing in C\#. Continuous integration and deployment for the project was achieved by using Jenkins, Nant and Powershell scripts. I took the lead in setting up the CI and CD as well as implementing static code analysis for the project with Sonarqube. The application was going to make use of a POS terminal to pay for the transactions via NFC cards. I did a lot of investigation with different devices that the client wanted to use. The device that we finally agreed upon would run on Android and I worked on a prototype for the device to receive card input and perform printing with the built in printer on the device. This prototype was developed in Xamarin for Android.}
+
+\entry
+{2016--2017} %2016 September - 2017 Feb
+{Software Engineer}
+{Entelect Software - Standard Bank} %Standard Bank - Group Control Data Engine
+{I worked on a data warehouse project. This project involves gathering data from 4 different source systems throughout the bank and centralising this data in order to report on it more efficiently. This project is making use of SQL Server, SSIS and .NET MVC Web Application for a front end display}
+
+\end{entrylist}
+
+\newpage
+
+\begin{entrylist}
+
+\entry
+{2016} %2016 July and August
+{Software Engineer}
+{Entelect Software - Internal Projects}
+{I worked on our internal leave capture system, where by enhancements were made in order to show your current leave due to you (as last synced by the payroll system), as well as allow managers to allocate discretionary and study leave to employees. This allowed managers to more easily track discretionary and study leave, rather than having it openly ``bookable''. The website is a pure .NET MVC website and uses JQuery and KnockoutJs on the front end.}
+
+\entry
+{2016} %2016 May to June
+{Software Engineer}
+{Entelect Software - Silica} %Silica - QC Rejection Manager
+{I worked on a system called QC Rejection Manager. This was a bespoke system to be used by Silica in order for administrators to manage their QC (Quality Check) rules. These rules helped the users determine if an investment into a certain product was valid - by checking a bunch of criteria. The aim of this system was to manage duplicate rules. We developed a Java application making use of a string similarity library to determine if rules were duplicated. The rules were stored in a MongoDB. Due to budget reasons, the system never went live.}
+
+\entry
+{2015--2016} % 2015 June for estate's late to 2015 Dec. 2016 Jan to May for transfers 
+{Software Engineer}
+{Entelect Software - Silica} %Silica - Estate's Late and Transfers Email Liaising Application
+{I worked in a team of continually changing size, varying from 2 to 4 members, on a new system to assist administrators in the processing and email generation (for liaising) of pre-retirement and post-retirement fund transfers. The requirements of the system were incomplete in the beginning and consistently changed. Initial estimate was 3 months with half the system requirements incomplete. We manage to complete the project in 5 months. I was assigned project lead for this system and in charge of liaising with the client to extend deadlines and gather outstanding requirements. After completion of the project maintenance was done for 6 months.}
+
+\entry
+{2015} %2015 March to June
+{Software Engineer}
+{Entelect Software - Silica} %Silica - Public Facing Investment Websites
+{I worked in a team of 3 on web maintenance for the following clients: Prudential, Boutique Collective Investments, Collective Investments, Investment Solutions and Ashburton Unit Trust. Technologies used MVC Website and JQuery (and various JS libraries).}
+
+\entry
+{2015} %2015 Jan to March
+{Software Engineer}
+{Entelect Software - Boot camp}
+{I started as a graduate at Entelect and they provided training for graduates. In this boot camp we learned about the agile manifesto, using git for source control, some business analysis techniques and most importantly best coding practices like SOLID, test driven development and pair programming.}
+
+\entry
+{2014}
+{Informatics 3 Tutor}
+{The University of Johannesburg}
+{I worked as a student tutor to assist students studying Informatics 3A and 3B. Activities involved: explanation of code and programming concepts as well as code review}
+
+\entry
+{2012--2014}
+{Informatics 1 Tutor}
+{The University of Johannesburg}
+{I worked as a student tutor to assist students studying Informatics 1A and 1B.  Activities involved: explanation of code and programming concepts as well as code review}
+
+\entry
+{2013-2014} %2013 Nov - 2014 Jan
+{Temporary Software Developer}
+{Biddcom Software}
+{I worked as a temporary software developer for Biddcom Software performing various tasks. Development aspects covered while I was there: asmx web service, WCF service, Android, MySQL, MS SQL Server, RESTful web service, parsing XML and JSON}
+
+\entry
+{2013}
+{Computer Science 2 Tutor}
+{The University of Johannesburg}
+{I worked as a student tutor to assist students studying Computer Science 2A and 2B.  Activities involved: explanation of code and programming concepts as well as code review}
+
+\entry
+{2010} % Dec 2010 - Jan 2011
+{General Assistant}
+{Biddcom Software}
+{Duties: wiring Ethernet cables, installing and configuring various software, and software testing}
+
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	PROGRAMMING LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{programming/technology experience}
+
+\begin{entrylist}
+	
+\entry
+{}
+{}
+{}
+{The following is a list of languages and technologies that I have worked with in the past: dotnet-core 2, Angular2, TypeScript, Xamarin, Docker, Dubernetes dotnet-framework 4+, RavenDB, DevOps, RabbitMQ, C++, Erlang, Java, Native Android API, C\#, x86 assembly language, ASP.NET, Visual Basic, JQuery, Delphi, MySQL, MongoDB, SQL Server, HTML5, CSS3.}
+	
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	TEAM EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{team experience}
+
+\begin{entrylist}
+
+\entry
+{2018}
+{Google Hash Code}
+{Online Competition}
+{I participated in a team of 4 in the Google Hash Code. The task was to route self-driving cars through a city to optimize travel time for all requested riders. The Hash Code competition is limited to 4 hours.}
+
+\entry
+{2017}
+{Google Hash Code}
+{Online Competition}
+{I participated in a team of 4 in the Google Hash Code. The task was to organise how caching was to be distributed to different YouTube servers. The Hash Code competition is limited to 4 hours.}
+
+\entry
+{2016}
+{Google Hash Code}
+{Online Competition}
+{I participated in a team of 3 in the Google Hash Code. The task was to route drones from warehouse to customers in the most efficient way possible. The Hash Code competition is limited to 4 hours.}
+
+\entry
+{2014}
+{Discovery Hackathon}
+{Johannesburg}
+{I worked in a team of 4 to develop a gamified running app. Users would be awarded points for successfully completing challenges and level up to unlock in challenges. Users could also participate in weekly challenges.}
+
+\entry
+{2014}
+{Ubiquitous Products and Services Innovation (UPSI)}
+{The University of Johannesburg and Universidad EAFIT}
+{I worked in a team of 5 (consisting of three Colombian students and two South African students) to develop a safety assistance system, where riders of motorcycles cannot start the bike without wearing the helmet. The system will also detects if the biker has been in an accident and will then notify an emergency centre. System parts: C\# ASP.NET website, Android app, Microsoft Azure web service and database, C\# desktop application and the physical helmet with an accelerometer, gyroscope and an inertial measurement unit (IMU).}
+
+\entry
+{2013}
+{3\textsuperscript{rd} Year Informatics Project}
+{The University of Johannesburg}
+{I worked in a team of 4 to develop an event management system. System parts: C\# ASP.NET website and web service, Android app, and MySQL database}
+
+\entry
+{2012}
+{2\textsuperscript{nd} Year Informatics Project}
+{The University of Johannesburg}
+{I worked in a team of 4 to develop an e-commerce website. System parts: VB ASP.NET website and MS SQL database}
+
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+% DEVELOPMENT EXPERIENCE SECTION (MISC)
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{development experience (misc.)}
+
+\begin{entrylist}
+\entry
+{2014}
+{Bluetooth Development}
+{The University of Johannesburg}
+{I worked on the bluetooth interaction between an Arduino and the Android device for the application that we developed for the UPSI project.}
+
+\entry
+{2013}
+{NFC Development}
+{The University of Johannesburg}
+{I worked specifically on the NFC portion of the Android application that we used for our 3\textsuperscript{rd} project at UJ. The NFC implementation was to allow users to easily share contact details}
+
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	AWARDS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{awards/competitions}
+
+\begin{entrylist}
+
+\entry
+{2016}
+{Google Code Jam}
+{Online Competition}
+{I participated in the Google Code Jam 2016. I made it passed the qualification round and participated in Round 1B and 1C}
+
+\entry
+{2014}
+{Imagine Cup}
+{The University of Johannesburg}
+{Our team made it to the national finals (consisting of 12 teams) for Microsoft's Imagine Cup in 2014}
+
+\entry
+{2013}
+{Projects Day 2013}
+{The University of Johannesburg}
+{1\textsuperscript{st} place among all 3\textsuperscript{rd} year projects}
+
+\entry
+{2013}
+{Research Symposium}
+{The University of Johannesburg}
+{1\textsuperscript{st} place for presenting research on NFC and Bluetooth with a colleague}
+
+\entry
+{2012--2013}
+{Certified Tutor}
+{The University of Johannesburg}
+{Trained and employed as a tutor by the University of Johannesburg}
+
+\entry
+{2011--2013}
+{Top Achiever}
+{The University of Johannesburg}
+{Recognised as a top achiever by the Faculty of Science each year}
+
+\entry
+{2011--2013}
+{Informatics Top Achiever}
+{The University of Johannesburg}
+{Recognised as a 10 top achiever by the Academy of Computer Science and Software Engineering, each semester}
+
+\entry
+{2011--2013}
+{Computer Science Top Achiever}
+{The University of Johannesburg}
+{Recognised as a 10 top achiever by the Academy of Computer Science and Software Engineering, each year}
+
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	EXTRA CURRICULAR SECTION
+%----------------------------------------------------------------------------------------
+
+\section{extra curricular}
+
+\begin{entrylist}
+
+\entry
+{2013--Now}
+{Golden Key International Honour Society}
+{The University of Johannesburg}
+{Became a member of the Golden Key International Honour Society in 2013}
+
+\entry
+{2013--Now}
+{UJenius at UJ}
+{The University of Johannesburg}
+{UJenius member}
+
+\end{entrylist}
+
+\end{document}
