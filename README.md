@@ -8,6 +8,9 @@ See [`LICENSE.md`](./LICENSE.md) for full terms.
 This code was previously available under an open source license. That license is no longer in effect.  
 If you became aware of this license change—either through this repository or direct communication—you are required to remove any prior usage of this code.
 
+# Migrated
+Moved to: https://codeberg.org/newteq/latex-cv
+
 # Getting started
 
 ## Installation
